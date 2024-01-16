@@ -1,0 +1,7 @@
+version: '3'
+
+tasks: 
+  gen_proto_files:
+    cmds: 
+      - echo "Generating gRPC protobuf files"
+      - python -m grpc_tools.protoc -I./proto --python_out=./pb --pyi_out=./pb --grpc_python_out=./pb ./proto/*.proto

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package auth_service;
+
+import "google/protobuf/empty.proto";
+
+message GenericResponse {
+    string message = 1;
+    int64 code = 2;
+}
+
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    string token = 1;
+    GenericResponse response_info = 2;
+}
+
+message SignUpRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message SignUpResponse {
+    string token = 1;
+    GenericResponse response_info = 2;
+}
+
+message LogoutResponse {
+    GenericResponse response_info = 1;
+}
+
+
+service AuthenticationService {
+    rpc Login(LoginRequest) returns (LoginResponse);
+    rpc SignUp(SignUpRequest) returns (SignUpResponse);
+    rpc Logout(google.protobuf.Empty) returns (LogoutResponse);
+}
