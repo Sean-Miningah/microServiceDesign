@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package product; 
+
+message GenericResponse {
+  int64 code = 1;
+  string message = 2;
+}
+
+message CreateProductRequest {
+	string name = 1;
+	string description = 2;
+	string price = 3;
+	string category = 4;
+}
+
+message CreateProductResponse {
+	string id = 1;
+	GenericResponse response_info = 2;
+}
+
+service ProductService {
+	rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse);
+}
